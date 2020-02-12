@@ -1,0 +1,26 @@
+dist: xenial
+language: python
+python:
+  - "3.5"
+  - "3.6"
+  - "3.7"
+
+install:
+  - pip install tox-travis
+
+script:
+  - tox
+
+after_success:
+  - tox -e coverage,codecov
+
+deploy:
+  - provider: pypi
+    user: ruohoruotsi
+    password:
+      secure: "CqlqFFCDfh82G2ts96UhS3Kp25443jpQpK/sgJMjOIfCXOWnkIW7eBB8mTut6+/+qPJ9dSgeaabs4r1HUV74v9c5hUbaNqG4mzlOz9lh+FitlIYx0VtFvS3+o9hZuI5kYPrSon5aTKK7+JYgJ/l5A4mGXguTaPt0JPVWXSvndF6ky2UJFRryBzwMYkvm/zhGKaz8KDhzVjdkAXkIqV8nBH5DUlkyg/mSRvCuPTpegE6hRvu0u677q0Rpyf7saVJ8/HMo7DGASxeAMlMWrVtOBmTO68VrdIGVM9pZDJSdVVb29azPT6YEsWOkVBVkwSaN5duKofTlRA/V0NSCYuwo6CnntK7h3PBJnOi4npxg3g2VQivbkEy0R0mmMlvs5wuQnSpeEilog0oqtU4UTAJobAz9ehWAH1ZApVcpxrZFuy4c2eB7qEexyJTfe/KzBbczYwah77yz6wRmlaJLehWoi7Iz+pkCGaHxGaDYvPZqWFDBdjfAv8EHM0nsStKu3gIrYxTKmGVpnd+eko2PiOIpBM7dLO0PSml8W03aULpnvNnJxP398xgORJ9dRXPQWN3xjFaT1iZyuACY0OT7AhW9i8nntXotkhd0Wztiq5nTBgvSY02tkbRZ+/W4VcTIXcQi8plOmPw9qWjiRcg7ECFCRhn7qcFGA44S6V30gwNDa8M="
+    distributions: "sdist bdist_wheel"
+    on:
+      python: 3.6
+      repo: Niger-Volta-LTI/iranlowo
+      tags: true
